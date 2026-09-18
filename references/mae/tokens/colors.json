@@ -1,0 +1,105 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "core": {
+    "text-muted": {
+      "value": "#67768e",
+      "role": "text-muted",
+      "name": "ast-global-color-3"
+    },
+    "background": {
+      "value": "#ffffff",
+      "role": "background",
+      "name": "theme-color"
+    },
+    "text-primary": {
+      "value": "#000000",
+      "role": "text-primary",
+      "name": "wfp-button-color"
+    },
+    "border": {
+      "value": "#222222",
+      "role": "border",
+      "name": "jkit-txt-h-color"
+    },
+    "accent": {
+      "value": "#ffc402",
+      "role": "accent",
+      "name": "wp--preset--color--luminous-vivid-amber"
+    }
+  },
+  "status": {
+    "warning": {
+      "value": "#ffcd57",
+      "role": "warning",
+      "name": "ast-global-color-7"
+    },
+    "success": {
+      "value": "#34d399",
+      "role": "success"
+    }
+  },
+  "extended": {
+    "ast-code-block-background": {
+      "value": "#f1f1f1",
+      "role": "unknown",
+      "name": "ast-code-block-background"
+    },
+    "color-a0a3cc": {
+      "value": "#a0a3cc",
+      "role": "info"
+    },
+    "color-8b90c8": {
+      "value": "#8b90c8",
+      "role": "unknown"
+    },
+    "color-6366a0": {
+      "value": "#6366a0",
+      "role": "unknown"
+    },
+    "ast-global-color-2": {
+      "value": "#1e293b",
+      "role": "unknown",
+      "name": "ast-global-color-2"
+    },
+    "e-global-color-primary": {
+      "value": "#070835",
+      "role": "unknown",
+      "name": "e-global-color-primary"
+    },
+    "ast-global-color-0": {
+      "value": "#060097",
+      "role": "unknown",
+      "name": "ast-global-color-0"
+    },
+    "jkit-txt-m-color": {
+      "value": "#999999",
+      "role": "unknown",
+      "name": "jkit-txt-m-color"
+    },
+    "color-565a94": {
+      "value": "#565a94",
+      "role": "unknown"
+    },
+    "ast-search-border-color": {
+      "value": "#e6e6e6",
+      "role": "unknown",
+      "name": "ast-search-border-color"
+    },
+    "color-5865f2": {
+      "value": "#5865f2",
+      "role": "unknown"
+    },
+    "color-444444": {
+      "value": "#444444",
+      "role": "unknown"
+    },
+    "color-cccccc": {
+      "value": "#cccccc",
+      "role": "unknown"
+    }
+  },
+  "meta": {
+    "theme": "light",
+    "extracted": "2026-09-18"
+  }
+}

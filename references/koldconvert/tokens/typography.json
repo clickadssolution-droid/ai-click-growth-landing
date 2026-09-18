@@ -1,0 +1,82 @@
+{
+  "families": [
+    "Arial",
+    "Inter"
+  ],
+  "scale": {
+    "heading-1": {
+      "fontFamily": "Arial",
+      "fontSize": "3.4rem",
+      "fontWeight": "700",
+      "lineHeight": null,
+      "source": "css"
+    },
+    "heading-2": {
+      "fontFamily": "Arial",
+      "fontSize": "clamp(2.5rem,5.4vw,4.1rem)",
+      "fontWeight": "700",
+      "lineHeight": null,
+      "source": "css"
+    },
+    "heading-3": {
+      "fontFamily": "Arial",
+      "fontSize": "clamp(2.1rem,4.6vw,3.3rem)",
+      "fontWeight": "700",
+      "lineHeight": null,
+      "source": "css"
+    },
+    "body": {
+      "fontFamily": "Inter",
+      "fontSize": ".92rem",
+      "fontWeight": "400",
+      "lineHeight": null,
+      "source": "css"
+    },
+    "caption": {
+      "fontFamily": "Inter",
+      "fontSize": ".82rem",
+      "fontWeight": "400",
+      "lineHeight": null,
+      "source": "css"
+    }
+  },
+  "fontFaces": [
+    {
+      "family": "Inter",
+      "src": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf",
+      "format": "truetype",
+      "weight": "400"
+    },
+    {
+      "family": "Inter",
+      "src": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZg.ttf",
+      "format": "truetype",
+      "weight": "500"
+    },
+    {
+      "family": "Inter",
+      "src": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf",
+      "format": "truetype",
+      "weight": "600"
+    },
+    {
+      "family": "Inter",
+      "src": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf",
+      "format": "truetype",
+      "weight": "700"
+    },
+    {
+      "family": "Inter",
+      "src": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuDyYMZg.ttf",
+      "format": "truetype",
+      "weight": "800"
+    }
+  ],
+  "rules": {
+    "maxSizesPerScreen": 4,
+    "headingWeightRange": "600-700",
+    "bodyWeight": 400,
+    "lineHeightBody": 1.5,
+    "lineHeightHeading": 1.2
+  }
+}
