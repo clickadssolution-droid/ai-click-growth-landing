@@ -53,7 +53,7 @@ export const NAV_LINKS = [
   { label: "Qué analizamos", href: "#que-analizamos" },
   { label: "Servicios", href: "#servicios" },
   { label: "Método", href: "#metodo" },
-  { label: "Casos", href: "#casos" },
+  { label: "Oportunidades", href: "#areas-de-oportunidad" },
   { label: "FAQ", href: "#faq" },
 ] as const;
 
@@ -76,7 +76,7 @@ export const FOOTER_SOCIAL_LINKS = [
 export const FOOTER_COMPANY_LINKS = [
   { label: "Qué analizamos", href: "#que-analizamos" },
   { label: "Método", href: "#metodo" },
-  { label: "Casos", href: "#casos" },
+  { label: "Oportunidades", href: "#areas-de-oportunidad" },
   { label: "Quiénes somos", href: "#quienes-somos" },
   { label: "FAQ", href: "#faq" },
 ] as const;
