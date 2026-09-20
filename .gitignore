@@ -1,2 +1,23 @@
 # Playwright CLI output (may contain credentials)
 .playwright-cli/
+
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+build/
+
+# env
+.env*
+!.env.example
+
+# misc
+.DS_Store
+*.log
+npm-debug.log*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
