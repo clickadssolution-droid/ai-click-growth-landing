@@ -12,23 +12,21 @@ interface HeaderProps {
 
 /**
  * Header sticky con marca, navegación mínima y CTA (brief: "HEADER").
- * V1.7: última pasada de compactación (~10-15% adicional sobre V1.6) — logo
- * 74-84 mobile / 78-88 tablet / 82-92 desktop de ancho, padding vertical
- * 6-8 mobile / 8-10 tablet / 8-10 desktop, CTA con padding vertical 10-12px /
- * horizontal 22-28px. Gap de nav sin cambios (ya estaba equilibrado).
+ * V1.8: última pasada de compactación — logo 74 mobile / 78 tablet / 82
+ * desktop de ancho, padding vertical 6 mobile / 8 tablet / 8 desktop.
  */
 export function Header({ hasLogoColor = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border-light/80 bg-white/[0.88] supports-[backdrop-filter]:backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between px-6 py-1.5 sm:px-8 sm:py-2 lg:py-2.5">
+      <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between px-6 py-[6px] sm:px-8 sm:py-[8px] lg:py-[8px]">
         <a href="#top" className="shrink-0" aria-label="AI Click Solution — inicio">
           <BrandMark
             tone="light"
             hasLogoColor={hasLogoColor}
             priority
-            className="w-[78px] sm:w-[83px] lg:w-[87px]"
+            className="w-[74px] sm:w-[78px] lg:w-[82px]"
           />
         </a>
 
@@ -93,7 +91,7 @@ export function Header({ hasLogoColor = false }: HeaderProps) {
               </a>
             ))}
             <AuditCtaButton origin="header" variant="primary" className="mt-3 w-full">
-              {CTA_COPY.headerCta}
+              {CTA_COPY.headerCtaMobile}
             </AuditCtaButton>
           </Container>
         </div>

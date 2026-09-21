@@ -54,6 +54,7 @@ export const NAV_LINKS = [
   { label: "Servicios", href: "#servicios" },
   { label: "Método", href: "#metodo" },
   { label: "Oportunidades", href: "#areas-de-oportunidad" },
+  { label: "Quiénes somos", href: "#quienes-somos" },
   { label: "FAQ", href: "#faq" },
 ] as const;
 
@@ -93,7 +94,9 @@ export const FOOTER_LEGAL_LINKS = [
 ] as const;
 
 export const CTA_COPY = {
-  headerCta: "Auditoría Gratuita",
+  headerCta: "AUDITORÍA GRATUITA",
+  /** Solo para el CTA del menú móvil expandido del header — ancho limitado (w-full). */
+  headerCtaMobile: "QUIERO MI AUDITORÍA",
   heroPrimary: "QUIERO MI AUDITORÍA GROWTH 360°",
   heroSecondary: "Ver qué analizamos",
   auditSection: "Solicitar mi Auditoría Growth 360°",
@@ -356,6 +359,27 @@ export const ABOUT_CONTENT = {
   body: "AI Click Solution combina marketing de performance, tecnología y estrategia con inteligencia artificial para que la publicidad, la web, el ecommerce y la automatización de tu negocio funcionen como un mismo sistema — no como iniciativas sueltas que no se hablan entre sí.",
   pillars: ["Marketing", "Tecnología", "Estrategia", "IA"] as const,
 } as const;
+
+/**
+ * Fundadores/directores con presentación fotográfica en "Quiénes somos".
+ * Data-driven a propósito: agregar un socio nuevo en el futuro es sumar un
+ * objeto aquí — `FounderCard` (components/about) no necesita cambiar.
+ */
+export const FOUNDERS = [
+  {
+    name: "Carlos Peña",
+    role: "CEO & Growth Strategist",
+    company: "AI Click Solution",
+    tagline: "Performance · Tecnología · Inteligencia Artificial",
+    bio: "Estrategia, tecnología y crecimiento conectados en un solo sistema.",
+    photo: {
+      src: "/brand/carlos-pena-ceo.jpeg",
+      alt: "Carlos Peña, CEO y Growth Strategist de AI Click Solution",
+    },
+  },
+] as const;
+
+export type Founder = (typeof FOUNDERS)[number];
 
 export const FINAL_CTA_CONTENT = {
   headline: "Tu negocio puede tener oportunidades de crecimiento que hoy todavía no estás viendo.",
