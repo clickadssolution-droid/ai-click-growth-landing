@@ -17,7 +17,7 @@ export default function GraciasPage() {
     <div>
       <ThankYouViewTracker />
       <Header hasLogoColor={hasLogoColor} />
-      <main>
+      <main id="main-content">
         <section className="bg-white py-14 sm:py-16 lg:py-20">
           <Container className="max-w-2xl text-center">
             <span className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-blue-600">

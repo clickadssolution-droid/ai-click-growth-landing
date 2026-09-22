@@ -37,7 +37,7 @@ export function Services() {
                 />
                 <span
                   className={`font-metric font-semibold tabular-nums ${
-                    service.featured ? "text-3xl text-orange-500" : "text-2xl text-blue-600"
+                    service.featured ? "text-3xl text-navy-900" : "text-2xl text-blue-600"
                   }`}
                 >
                   {service.number}

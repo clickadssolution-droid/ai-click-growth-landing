@@ -120,7 +120,7 @@ export function Footer({ hasLogoWhite = false }: FooterProps) {
           <p>
             © {year} {SITE.name}. Todos los derechos reservados.
           </p>
-          <nav aria-label="Legal" className="flex items-center gap-2">
+          <nav aria-label="Enlaces legales" className="flex items-center gap-2">
             {FOOTER_LEGAL_LINKS.map((link, i) => (
               <span key={link.label} className="flex items-center gap-2">
                 {i > 0 ? <span aria-hidden="true">·</span> : null}

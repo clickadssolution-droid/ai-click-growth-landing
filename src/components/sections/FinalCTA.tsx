@@ -36,7 +36,7 @@ export function FinalCTA() {
             </AuditCtaButton>
           </div>
 
-          <p className="mt-3 text-xs text-text-muted-dark/60">{TRUST_CHIPS.join(" · ")}</p>
+          <p className="mt-3 text-xs text-text-muted-dark/70">{TRUST_CHIPS.join(" · ")}</p>
         </Reveal>
       </Container>
     </section>

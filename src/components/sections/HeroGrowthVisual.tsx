@@ -63,11 +63,14 @@ export function HeroGrowthVisual({ hasIsotype = false }: HeroGrowthVisualProps) 
           const rad = (angleDeg * Math.PI) / 180;
           const x = CENTER + RADIUS * Math.cos(rad);
           const y = CENTER + RADIUS * Math.sin(rad);
+          // En % del contenedor (no px): el gráfico escala con la columna igual
+          // que el SVG (viewBox), así los nodos no se salen cuando la columna
+          // mide menos de SIZE (ej. 1024px, donde se recortaban).
           return (
             <div
               key={HERO_ECOSYSTEM_NODES[i]}
               className="node-float absolute -translate-x-1/2 -translate-y-1/2"
-              style={{ left: x, top: y, animationDelay: `${i * 0.7}s` }}
+              style={{ left: `${(x / SIZE) * 100}%`, top: `${(y / SIZE) * 100}%`, animationDelay: `${i * 0.7}s` }}
             >
               <span className="whitespace-nowrap rounded-[var(--radius-pill)] border border-white/15 bg-navy-800 px-4 py-2.5 font-body text-sm font-semibold text-white shadow-[0_8px_20px_-6px_rgba(0,0,0,0.4)]">
                 {HERO_ECOSYSTEM_NODES[i]}

@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div id="top">
       <Header hasLogoColor={hasLogoColor} />
-      <main>
+      <main id="main-content">
         <Hero hasIsotype={hasIsotype} />
         <OpportunityAreas />
         <AuditScope />

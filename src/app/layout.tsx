@@ -47,9 +47,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="es"
+      data-scroll-behavior="smooth"
       className={`${manrope.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-white text-navy-900">
+        <a href="#main-content" className="skip-link">
+          Saltar al contenido
+        </a>
         <AuditModalProvider>
           {children}
           <AuditModal />

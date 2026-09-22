@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { BrandMark } from "@/components/ui/BrandMark";
@@ -20,6 +20,19 @@ interface HeaderProps {
 export function Header({ hasLogoColor = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  // ESC cierra el menú móvil y devuelve el foco al botón que lo abre.
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      setIsMenuOpen(false);
+      menuButtonRef.current?.focus();
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border-light/80 bg-white/[0.88] supports-[backdrop-filter]:backdrop-blur-md">
@@ -56,6 +69,7 @@ export function Header({ hasLogoColor = false }: HeaderProps) {
         </div>
 
         <button
+          ref={menuButtonRef}
           type="button"
           className="flex h-11 w-11 items-center justify-center rounded-md text-navy-900 lg:hidden"
           aria-expanded={isMenuOpen}
@@ -97,7 +111,17 @@ export function Header({ hasLogoColor = false }: HeaderProps) {
                 {link.label}
               </a>
             ))}
-            <AuditCtaButton origin="header" variant="primary" className="mt-3 w-full">
+            <AuditCtaButton
+              origin="header"
+              variant="primary"
+              className="mt-3 w-full"
+              onBeforeOpen={() => {
+                // Cierra el menú y deja el foco en el toggle: este CTA se desmonta,
+                // así el modal devuelve el foco a un elemento que sigue existiendo.
+                setIsMenuOpen(false);
+                menuButtonRef.current?.focus();
+              }}
+            >
               {CTA_COPY.headerCtaMobile}
             </AuditCtaButton>
           </Container>

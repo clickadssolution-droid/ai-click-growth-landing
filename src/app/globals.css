@@ -51,6 +51,29 @@ html {
   scroll-behavior: smooth;
 }
 
+/*
+ * Alto real del Header sticky por breakpoint (logo 74/78/82px de ancho +
+ * padding vertical, ver Header.tsx). Única fuente para compensar anchors: sin
+ * esto, al navegar a #seccion el inicio queda tapado bajo el header.
+ */
+:root {
+  --header-height: 90px;
+}
+@media (min-width: 40rem) {
+  :root {
+    --header-height: 98px;
+  }
+}
+@media (min-width: 64rem) {
+  :root {
+    --header-height: 102px;
+  }
+}
+
+:where(section, main)[id] {
+  scroll-margin-top: var(--header-height);
+}
+
 body {
   background: var(--color-white, #ffffff);
   color: var(--color-navy-900);
@@ -67,7 +90,11 @@ body {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    /* Sin delays: evita que blobs/nodos (animation-delay inline) o Reveal
+       (transitionDelay inline) den un salto tardío tras la espera. */
+    animation-delay: 0s !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
 }
@@ -83,6 +110,25 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* Skip link: fuera de pantalla hasta recibir foco por teclado */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 60;
+  transform: translateY(-200%);
+  border-radius: var(--radius-pill);
+  background: var(--color-navy-900);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+.skip-link:focus {
+  transform: none;
 }
 
 /* Focus visible consistente (brief sección 14: nunca outline:none sin sustituto) */

@@ -37,6 +37,14 @@ No se envían nombre, email, empresa o teléfono al tracking actual.
 - No hay eventos de error, abandono o respuesta del CRM.
 - `thank_you_view` no demuestra que exista un lead persistido.
 
+## Observación QA Playwright (2026-09-22)
+
+### PENDIENTE DE VERIFICAR EN PRODUCCIÓN
+
+En `next dev`, `thank_you_view` se registra **dos veces** por cada visita a `/gracias`. Es consistente con el doble montaje de efectos de React StrictMode en desarrollo (`ThankYouViewTracker` dispara en `useEffect`), por lo que **no se trata todavía como bug** y no se cambió la lógica.
+
+Volver a comprobarlo con `next build && next start` y, al conectar GA4 / Meta Pixel, confirmar en su vista de debug que llega un único evento por visita. Si se duplica en producción, añadir deduplicación en `ThankYouViewTracker`.
+
 ## Requisitos para producción
 
 ### PENDIENTE

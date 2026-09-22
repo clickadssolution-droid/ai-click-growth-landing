@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FormField } from "@/components/modal/FormField";
 import { ChipSelect } from "@/components/modal/ChipSelect";
@@ -30,6 +30,19 @@ export function AuditForm() {
   const [step2Errors, setStep2Errors] = useState<Step2Errors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const hasMountedRef = useRef(false);
+
+  // Al cambiar de paso, el botón que tenía el foco se desmonta: se lleva el
+  // foco al título del nuevo paso para no perderlo fuera del diálogo. En el
+  // montaje inicial no se toca (useFocusTrap ya enfoca el primer control).
+  useEffect(() => {
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true;
+      return;
+    }
+    titleRef.current?.focus();
+  }, [step]);
 
   function updateField<K extends keyof AuditFormData>(key: K, value: AuditFormData[K]) {
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -81,7 +94,12 @@ export function AuditForm() {
         <p className="mb-1 font-body text-xs font-semibold uppercase tracking-[0.06em] text-blue-700">
           Paso 1 de 2
         </p>
-        <h2 id="audit-modal-title" className="font-display text-2xl font-bold text-navy-900">
+        <h2
+          ref={titleRef}
+          id="audit-modal-title"
+          tabIndex={-1}
+          className="font-display text-2xl font-bold text-navy-900"
+        >
           {AUDIT_MODAL_CONTENT.step1.title}
         </h2>
 
@@ -142,7 +160,9 @@ export function AuditForm() {
 
   return (
     <div>
-      <div className="mb-1 flex items-center justify-between">
+      {/* lg:pr-10 — en desktop el botón X (absolute, esquina del diálogo) cae
+          sobre esta fila; el padding deja "Atrás" fuera de su área de clic. */}
+      <div className="mb-1 flex items-center justify-between lg:pr-10">
         <p className="font-body text-xs font-semibold uppercase tracking-[0.06em] text-blue-700">
           Paso 2 de 2
         </p>
@@ -154,7 +174,12 @@ export function AuditForm() {
           ← Atrás
         </button>
       </div>
-      <h2 id="audit-modal-title" className="font-display text-2xl font-bold text-navy-900">
+      <h2
+        ref={titleRef}
+        id="audit-modal-title"
+        tabIndex={-1}
+        className="font-display text-2xl font-bold text-navy-900"
+      >
         {AUDIT_MODAL_CONTENT.step2.title}
       </h2>
 
