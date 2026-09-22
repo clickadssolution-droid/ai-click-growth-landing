@@ -26,11 +26,13 @@ export function SectionHeading({
     <Reveal className={`max-w-3xl ${isCenter ? "mx-auto text-center" : ""} ${className}`}>
       {eyebrow ? (
         <span
-          className={`mb-3 inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-[0.08em] ${
+          className={`mb-3 inline-block text-balance font-body text-xs font-semibold uppercase tracking-[0.08em] ${
             isDark ? "text-orange-500" : "text-blue-700"
           }`}
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-current" aria-hidden="true" />
+          {/* Inline (no flex): al hacer wrap el punto acompaña a la primera línea en
+              vez de quedar huérfano a la izquierda del bloque centrado. */}
+          <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-current align-[0.1em]" aria-hidden="true" />
           {eyebrow}
         </span>
       ) : null}

@@ -35,7 +35,9 @@ export default function GraciasPage() {
             <h1 className="font-display text-[clamp(1.875rem,1.6rem+1.2vw,2.75rem)] font-bold leading-[1.15] text-navy-900">
               {GRACIAS_CONTENT.headline}
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-text-muted-light">{GRACIAS_CONTENT.body}</p>
+            <p className="mx-auto mt-4 max-w-[40rem] text-lg leading-relaxed text-text-muted-light">
+              {GRACIAS_CONTENT.body}
+            </p>
 
             <div className="mx-auto mt-12 max-w-lg rounded-[var(--radius-lg)] border border-border-light bg-ivory-50 p-7 sm:p-8">
               <h2 className="font-display text-xl font-bold text-navy-900">

@@ -13,8 +13,8 @@ const STEP_STYLES = [
   { card: "bg-blue-600/[0.06]", badge: "border-blue-600/30 bg-blue-50 text-blue-700" },
   { card: "bg-navy-900/[0.04]", badge: "border-blue-600/30 bg-blue-50 text-blue-700" },
   { card: "bg-blue-600/[0.06]", badge: "border-blue-600/30 bg-blue-50 text-blue-700" },
-  { card: "bg-orange-500/[0.07]", badge: "border-orange-500/40 bg-orange-500/15 text-orange-600" },
-  { card: "bg-orange-500/[0.1]", badge: "border-orange-500/40 bg-orange-500/15 text-orange-600" },
+  { card: "bg-orange-500/[0.07]", badge: "border-orange-500/40 bg-orange-500/15 text-navy-900" },
+  { card: "bg-orange-500/[0.1]", badge: "border-orange-500/40 bg-orange-500/15 text-navy-900" },
 ] as const;
 
 export function Method() {

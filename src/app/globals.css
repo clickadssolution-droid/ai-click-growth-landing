@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Viewports bajos (ej. 1024×768): compacta solo el spacing vertical del Hero
+   para que el CTA primario quede above-the-fold sin tocar el tamaño del H1. */
+@custom-variant short (@media (max-height: 820px));
+
 /* AI Click Solution — design tokens (ver DESIGN-BRIEF.md secciones 2, 3, 5) */
 @theme {
   /* Color: marca */
@@ -224,7 +228,9 @@ body {
 /* CTA principal del Hero — micro floating muy lento y sutil (V1.3 punto 6).
    Solo desktop, se aplica vía clase de utilidad arbitraria de Tailwind
    (`lg:[animation:cta-float_...]`) y se pausa en hover para no pelear con la
-   transición de :hover (translateY -3px). Sin bounce, sin pulso, sin glow neón. */
+   transición de :hover (translateY -3px). Sin bounce, sin pulso, sin glow neón.
+   Solo 3 ciclos de entrada y luego queda estático (nunca movimiento perpetuo
+   sobre un control); prefers-reduced-motion lo anula vía la regla global. */
 @keyframes cta-float {
   0%,
   100% {

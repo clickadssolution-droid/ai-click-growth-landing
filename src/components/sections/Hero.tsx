@@ -43,7 +43,7 @@ export function Hero({ hasIsotype = false }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-navy-900 pb-12 pt-6 sm:pb-14 sm:pt-8 lg:pb-14 lg:pt-10"
+      className="relative overflow-hidden bg-navy-900 pb-12 pt-6 sm:pb-14 sm:pt-8 lg:pb-14 lg:pt-10 lg:short:pt-4"
     >
       {/* Fondo ambiental: blobs muy lentos, ver DESIGN-BRIEF.md sección 8 */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -54,7 +54,7 @@ export function Hero({ hasIsotype = false }: HeroProps) {
       <Container className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-8">
         <div className="max-w-[560px] lg:max-w-[640px]">
           {/* Pre-headline: discreto a propósito (V1.3 punto 5) */}
-          <span className="mb-3 inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-white/15 bg-white/5 px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.06em] text-text-muted-dark">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-[var(--radius-pill)] lg:short:mb-2 border border-white/15 bg-white/5 px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.06em] text-text-muted-dark">
             <span className="relative flex h-2 w-2" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-500 opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-500" />
@@ -74,7 +74,7 @@ export function Hero({ hasIsotype = false }: HeroProps) {
           </h1>
 
           {/* Subheadline: corta, ancho acotado, gris azulado suave (V1.3 punto 4) */}
-          <p className="mt-4 max-w-[600px] text-[17px] leading-relaxed text-text-muted-dark sm:text-lg lg:text-xl">
+          <p className="mt-4 max-w-[600px] lg:short:mt-3 text-[17px] leading-relaxed text-text-muted-dark sm:text-lg lg:text-xl">
             {HERO_CONTENT.subheadline}
           </p>
 
@@ -82,11 +82,11 @@ export function Hero({ hasIsotype = false }: HeroProps) {
             {HERO_CONTENT.objection}
           </p>
 
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <div className="mt-5 lg:short:mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <AuditCtaButton
               origin="hero"
               variant="primary"
-              className="lg:[animation:cta-float_3.2s_ease-in-out_infinite] lg:hover:[animation-play-state:paused]"
+              className="lg:[animation:cta-float_3.2s_ease-in-out_3] lg:hover:[animation-play-state:paused]"
             >
               {CTA_COPY.heroPrimary}
             </AuditCtaButton>

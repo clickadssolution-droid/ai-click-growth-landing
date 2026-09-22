@@ -13,19 +13,36 @@ import {
 } from "@/lib/constants";
 import { resolveSectionHref } from "@/lib/nav";
 
-const SOCIAL_ICON_PATHS: Record<string, string> = {
-  Instagram: "M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4z M12 16a4 4 0 100-8 4 4 0 000 8z M17 6.2v.01",
-  LinkedIn: "M6.5 9.5v7M6.5 6.3v.01M10.5 16.5v-4.2a2 2 0 014 0v4.2M10.5 16.5v-6.5",
-  Facebook: "M14 8.5h2.2V5.5H14c-1.9 0-3.2 1.3-3.2 3.2v1.8H9v3h1.8v6h3v-6h2.1l.4-3h-2.5V9c0-.3.1-.5.7-.5z",
+/*
+ * Cada glifo ocupa una fracción distinta del lienzo 24×24 (Instagram lo llena;
+ * "in" y "f" usan ~40%), así que cada icono lleva su propio viewBox para que
+ * los tres se vean del mismo tamaño óptico. `non-scaling-stroke` mantiene el
+ * mismo grosor de trazo en pantalla pese a los distintos encuadres.
+ */
+const SOCIAL_ICONS: Record<string, { path: string; viewBox: string }> = {
+  Instagram: {
+    path: "M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4z M12 16a4 4 0 100-8 4 4 0 000 8z M17 6.2v.01",
+    viewBox: "0 0 24 24",
+  },
+  LinkedIn: {
+    path: "M6.5 9.5v7M6.5 6.3v.01M10.5 16.5v-4.2a2 2 0 014 0v4.2M10.5 16.5v-6.5",
+    viewBox: "1.75 2.65 17.5 17.5",
+  },
+  Facebook: {
+    path: "M14 8.5h2.2V5.5H14c-1.9 0-3.2 1.3-3.2 3.2v1.8H9v3h1.8v6h3v-6h2.1l.4-3h-2.5V9c0-.3.1-.5.7-.5z",
+    viewBox: "2.3 2.5 21 21",
+  },
 };
 
 function SocialIcon({ label }: { label: string }) {
+  const icon = SOCIAL_ICONS[label];
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="20" height="20" viewBox={icon.viewBox} fill="none" aria-hidden="true">
       <path
-        d={SOCIAL_ICON_PATHS[label]}
+        d={icon.path}
         stroke="currentColor"
-        strokeWidth="1.6"
+        strokeWidth="1.5"
+        vectorEffect="non-scaling-stroke"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -103,7 +120,7 @@ export function Footer({ hasLogoWhite = false }: FooterProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-text-muted-dark transition-colors duration-200 hover:border-white/30 hover:text-white"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-text-muted-dark transition-colors duration-200 hover:border-white/30 hover:text-white"
                 >
                   <SocialIcon label={social.label} />
                 </a>

@@ -7,11 +7,12 @@ import { CTA_COPY, SERVICES } from "@/lib/constants";
 /**
  * Servicios — jerarquía editorial con numeración y variación visual, NO una
  * cuadrícula uniforme de 6 cards idénticas (brief sección "SERVICIOS").
- * Layout en columnas (masonry) para evitar huecos irregulares de un grid estricto.
+ * Grid ordenado por filas (01–02–03 / 04–05–06): el masonry por columnas hacía
+ * que la lectura siguiera 01, 03, 05 en la primera fila.
  */
 export function Services() {
   return (
-    <section id="servicios" className="bg-ivory-50 py-12 sm:py-16 lg:py-20">
+    <section id="servicios" className="border-t border-border-light/70 bg-ivory-50 py-12 sm:py-16 lg:py-20">
       <Container>
         <SectionHeading
           eyebrow="Servicios"
@@ -19,11 +20,11 @@ export function Services() {
           lead="No vendemos tácticas sueltas — cada servicio se conecta con el resto para mover el mismo número: tu crecimiento."
         />
 
-        <div className="mt-8 columns-1 gap-5 sm:columns-2 lg:columns-3">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, i) => (
-            <Reveal key={service.number} delayMs={i * 60} className="mb-5 break-inside-avoid">
+            <Reveal key={service.number} delayMs={i * 60}>
               <article
-                className={`rounded-[var(--radius-lg)] border p-6 sm:p-7 ${
+                className={`h-full rounded-[var(--radius-lg)] border p-6 sm:p-7 ${
                   service.featured
                     ? "border-orange-500/40 bg-white shadow-[0_16px_36px_-16px_rgba(0,28,61,0.18)]"
                     : "border-border-light bg-white"
