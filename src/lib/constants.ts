@@ -8,7 +8,25 @@ export const SITE = {
   shortName: "AI Click",
   description:
     "Auditoría Growth 360° gratuita: descubre qué está frenando el crecimiento de tu negocio en publicidad, funnels, web, ecommerce, automatización e IA.",
+  /** Dominio oficial, forma canónica sin slash final — usado como metadataBase. */
   url: "https://aiclicksolution.com",
+} as const;
+
+/**
+ * Datos de contacto oficiales (V1 aprobada). Única fuente de verdad — evita
+ * hardcodear teléfono/email/redes sociales en distintos componentes.
+ */
+export const CONTACT = {
+  /** E.164 con "+" — para href="tel:" y como base del número de WhatsApp. */
+  phoneE164: "+51942256209",
+  /** Formato legible para mostrar en UI. */
+  phoneDisplay: "+51 942 256 209",
+  email: "info@aiclicksolution.com",
+  social: {
+    instagram: "https://www.instagram.com/aiclicksolution/",
+    linkedin: "https://www.linkedin.com/in/carlos-pe%C3%B1a-5b9b61b6/",
+    facebook: "https://www.facebook.com/aiclicksolution/",
+  },
 } as const;
 
 /**
@@ -41,10 +59,9 @@ export const BRAND_ASSET_ASPECT = {
   isotype: 1248 / 1161,
 } as const;
 
-/** TODO: centralizar y reemplazar por el número real de WhatsApp antes de producción. */
+/** WhatsApp comercial — número productivo derivado de CONTACT.phoneE164 (wa.me exige solo dígitos, sin "+"). */
 export const WHATSAPP_CONFIG = {
-  // Formato E.164 sin "+" ni espacios, ej. "521234567890"
-  phoneNumber: "REPLACE_WITH_REAL_WHATSAPP_NUMBER",
+  phoneNumber: CONTACT.phoneE164.replace("+", ""),
   defaultMessage:
     "Hola, equipo de AI Click Solution. Acabo de solicitar mi Auditoría Growth 360° y quiero compartirles información adicional sobre mi negocio.",
 } as const;
@@ -63,14 +80,11 @@ export const FOOTER_BRAND_CONTENT = {
   tagline: "Marketing, tecnología e IA trabajando como un solo sistema de crecimiento.",
 } as const;
 
-/**
- * Redes sociales del footer — sin URLs reales inventadas (brief V1.5 sección 6).
- * TODO: reemplazar `href: "#"` por el enlace real de cada red cuando exista.
- */
+/** Redes sociales del footer — URLs oficiales, ver CONTACT.social. */
 export const FOOTER_SOCIAL_LINKS = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Facebook", href: "#" },
+  { label: "Instagram", href: CONTACT.social.instagram },
+  { label: "LinkedIn", href: CONTACT.social.linkedin },
+  { label: "Facebook", href: CONTACT.social.facebook },
 ] as const;
 
 /** Footer — columna Compañía (brief V1.5 sección 8). */
@@ -112,7 +126,6 @@ export const CTA_ORIGINS = [
   "audit-section",
   "applied-experience",
   "services",
-  "cases",
   "final",
   "sticky-mobile",
 ] as const;

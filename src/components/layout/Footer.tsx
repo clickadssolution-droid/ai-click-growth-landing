@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { BrandMark } from "@/components/ui/BrandMark";
 import {
@@ -8,6 +11,7 @@ import {
   SERVICES,
   SITE,
 } from "@/lib/constants";
+import { resolveSectionHref } from "@/lib/nav";
 
 const SOCIAL_ICON_PATHS: Record<string, string> = {
   Instagram: "M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4z M12 16a4 4 0 100-8 4 4 0 000 8z M17 6.2v.01",
@@ -70,7 +74,15 @@ interface FooterProps {
  */
 export function Footer({ hasLogoWhite = false }: FooterProps) {
   const year = new Date().getFullYear();
-  const serviceLinks = SERVICES.map((service) => ({ label: service.title, href: "#servicios" }));
+  const pathname = usePathname();
+  const serviceLinks = SERVICES.map((service) => ({
+    label: service.title,
+    href: resolveSectionHref(pathname, "#servicios"),
+  }));
+  const companyLinks = FOOTER_COMPANY_LINKS.map((link) => ({
+    ...link,
+    href: resolveSectionHref(pathname, link.href),
+  }));
 
   return (
     <footer className="border-t border-blue-600/20 bg-navy-950 pt-16 pb-7 lg:pt-20">
@@ -88,6 +100,8 @@ export function Footer({ hasLogoWhite = false }: FooterProps) {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-text-muted-dark transition-colors duration-200 hover:border-white/30 hover:text-white"
                 >
@@ -98,7 +112,7 @@ export function Footer({ hasLogoWhite = false }: FooterProps) {
           </div>
 
           <FooterColumn title="Servicios" links={serviceLinks} ariaLabel="Servicios" />
-          <FooterColumn title="Compañía" links={FOOTER_COMPANY_LINKS} ariaLabel="Navegación de footer" />
+          <FooterColumn title="Compañía" links={companyLinks} ariaLabel="Navegación de footer" />
           <FooterColumn title="Legal" links={FOOTER_LEGAL_LINKS} ariaLabel="Legal" />
         </div>
 

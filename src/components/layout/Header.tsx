@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { BrandMark } from "@/components/ui/BrandMark";
 import { AuditCtaButton } from "@/components/ui/AuditCtaButton";
 import { CTA_COPY, NAV_LINKS } from "@/lib/constants";
+import { resolveSectionHref } from "@/lib/nav";
 
 interface HeaderProps {
   hasLogoColor?: boolean;
@@ -17,11 +19,16 @@ interface HeaderProps {
  */
 export function Header({ hasLogoColor = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-40 border-b border-border-light/80 bg-white/[0.88] supports-[backdrop-filter]:backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between px-6 py-[6px] sm:px-8 sm:py-[8px] lg:py-[8px]">
-        <a href="#top" className="shrink-0" aria-label="AI Click Solution — inicio">
+        <a
+          href={resolveSectionHref(pathname, "#top")}
+          className="shrink-0"
+          aria-label="AI Click Solution — inicio"
+        >
           <BrandMark
             tone="light"
             hasLogoColor={hasLogoColor}
@@ -34,7 +41,7 @@ export function Header({ hasLogoColor = false }: HeaderProps) {
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={resolveSectionHref(pathname, link.href)}
               className="font-body text-sm font-medium text-navy-900/80 transition-colors hover:text-blue-700"
             >
               {link.label}
@@ -83,7 +90,7 @@ export function Header({ hasLogoColor = false }: HeaderProps) {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={resolveSectionHref(pathname, link.href)}
                 onClick={() => setIsMenuOpen(false)}
                 className="rounded-md px-2 py-3 font-body text-base font-medium text-navy-900 hover:bg-ivory-50"
               >
